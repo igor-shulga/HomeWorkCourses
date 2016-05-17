@@ -39,13 +39,13 @@ public class AutomationCourseTesting extends BaseTest {
     }
 
     @Test
-    public void validateCoachNameIsSergey() {
+    public void validateCoachNameIsArtem() {
         homePage = new HomePage(driver);
         coursePage = new CoursePage(driver);
 
         homePage.openCoursesList();
         homePage.openCoursePage(courseName);
-        assertEquals("Sergey is not the coach", "Сергей Ватковский", coursePage.CoachName());
+        assertEquals("Artem is not the coach", "Артем Карпов", coursePage.CoachName("Артем"));
     }
 
     @Test

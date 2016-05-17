@@ -1,6 +1,7 @@
 package PageObjects;
 
 
+import com.sun.jdi.event.WatchpointEvent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -17,14 +18,23 @@ public class CoursePage {
     private By popUp = By.id("u11508");
     private By applicationButton = By.className("button");
     private By popUpFields = By.className("header");
+    private String x;
 
     public CoursePage(WebDriver driver) {
     this.driver = driver;
     PageFactory.initElements(driver, this);
     }
 
-    public String CoachName() {
-        return driver.findElement(coachName).getText();
+    public String CoachName(String name) {
+        List<WebElement> allFields = driver.findElements(coachName);
+        List<String> coachNames = new ArrayList<String>();
+        for(WebElement i : allFields){
+            if(i.getText().contains(name)){
+                x = i.getText();
+                break;
+            }
+        }
+        return x;
     }
 
     public String CoachCourse() {
@@ -52,7 +62,5 @@ public class CoursePage {
         }
         return fieldNames;
     }
-    public String getFieldName(int fieldNumber){
 
-    return getAllFields().get(fieldNumber);}
 }

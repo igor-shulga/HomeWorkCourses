@@ -43,7 +43,7 @@ public class AndroidCourseTest extends BaseTest{
 
         homePage.openCoursesList();
         homePage.openCoursePage(courseName);
-        assertEquals("Dmitry is not the coach","Дмитрий Ильченко",coursePage.CoachName());
+        assertEquals("Dmitry is not the coach","Дмитрий Ильченко",coursePage.CoachName("Дмитрий"));
     }
 
     @Test

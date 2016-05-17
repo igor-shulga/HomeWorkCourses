@@ -45,7 +45,7 @@ public class NetCourseTest extends BaseTest {
 
         homePage.openCoursesList();
         homePage.openCoursePage(courseName);
-        assertEquals("Artem is not the coach","Артем Фурсенко",coursePage.CoachName());
+        assertEquals("Artem is not the coach","Артем Фурсенко",coursePage.CoachName("Артем"));
     }
 
     @Test
