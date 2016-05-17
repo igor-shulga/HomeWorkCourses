@@ -57,7 +57,7 @@ public class AutomationCourseTesting extends BaseTest {
         homePage.openCoursePage(courseName);
 
         coursePage.clickLeaveApplication();
-        coursePage.swithToPopUp(); // focus on pop-up
+        coursePage.switchToPopUp(); // focus on pop-up
         assertTrue("Pop up was not shown", coursePage.popUpShown());
     }
 
@@ -70,7 +70,7 @@ public class AutomationCourseTesting extends BaseTest {
         homePage.openCoursePage(courseName);
 
         coursePage.clickLeaveApplication();
-        coursePage.swithToPopUp(); // focus on pop-up
+        coursePage.switchToPopUp(); // focus on pop-up
 
         assertEquals("Имя is not field name", "Имя", getFieldName("Имя"));
         assertEquals("Фамилия is not field name", "Фамилия", getFieldName("Фамилия"));

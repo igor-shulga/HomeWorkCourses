@@ -1,7 +1,7 @@
 package PageObjects;
 
 
-import com.sun.jdi.event.WatchpointEvent;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -44,7 +44,7 @@ public class CoursePage {
         driver.findElement(applicationButton).click();
     }
 
-    public void swithToPopUp() throws Exception {
+    public void switchToPopUp() throws Exception {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("document.getElementById('u11508').focus();");
         }
