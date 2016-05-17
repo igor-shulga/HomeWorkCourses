@@ -34,6 +34,7 @@ public class NetCourseTest extends BaseTest {
 
         homePage.openCoursesList();
         homePage.openCoursePage(courseName);
+
         assertEquals("Course has wrong name","Diving into .NET Platform (Погружение в .NET)",coursePage.CoachCourse());
     }
 

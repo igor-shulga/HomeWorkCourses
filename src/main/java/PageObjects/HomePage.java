@@ -14,8 +14,7 @@ public class HomePage {
     private By training = By.xpath(".//*[@id='menu1078']/a");
     private By courses = By.xpath(".//*[@id='menu1078']/ul/li[1]");
     private WebElement linkElement;
-    private By coursesList = By.xpath(".//*[@id='subMenuSubNodes1189']");
-    private By coursesTag = By.tagName("li");
+    private By coursesList = By.xpath(".//*[@id='subMenuSubNodes1189']/li[position()>0]/a");
 
 
 
@@ -34,19 +33,19 @@ public class HomePage {
     }
 
 
-       public void openCoursePage(String courseName) {
-        List<WebElement> element = driver.findElement(coursesList).findElements(coursesTag);
-        for (int i = 1; i <= element.size(); i++) {
-            linkElement = driver.findElement(By.xpath(".//*[@id='subMenuSubNodes1189']/li[" + i + "]/a"));
-            if(linkElement.getAttribute("text").contains(courseName)){
-                linkElement.click();
+
+    public void openCoursePage(String courseName) {
+        List<WebElement> element = driver.findElements(coursesList);
+
+        for (WebElement i: element){
+
+            if(i.getAttribute("text").contains(courseName)){
+                i.click();
                 break;
             }
         }
 
     }
-
-
 }
 
 
