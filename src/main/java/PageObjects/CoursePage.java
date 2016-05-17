@@ -18,7 +18,7 @@ public class CoursePage {
     private By popUp = By.id("u11508");
     private By applicationButton = By.className("button");
     private By popUpFields = By.className("header");
-    private String x;
+    private String foundName;
 
     public CoursePage(WebDriver driver) {
     this.driver = driver;
@@ -27,14 +27,13 @@ public class CoursePage {
 
     public String CoachName(String name) {
         List<WebElement> allFields = driver.findElements(coachName);
-        List<String> coachNames = new ArrayList<String>();
         for(WebElement i : allFields){
             if(i.getText().contains(name)){
-                x = i.getText();
+                foundName = i.getText();
                 break;
             }
         }
-        return x;
+        return foundName;
     }
 
     public String CoachCourse() {
