@@ -5,6 +5,11 @@ import PageObjects.HomePage;
 import org.junit.Test;
 import org.openqa.selenium.NoSuchElementException;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class NetCourseTest extends BaseTest {
 
     HomePage homePage;
@@ -66,10 +71,33 @@ public class NetCourseTest extends BaseTest {
         coursePage.clickLeaveApplication();
         coursePage.swithToPopUp(); // focus on pop-up
 
-        assertEquals("Имя is not field name", "Имя", coursePage.getFieldName(0));
-        assertEquals("Фамилия is not field name", "Фамилия", coursePage.getFieldName(1));
-        assertEquals("Электронная почта is not field name", "Электронная почта", coursePage.getFieldName(2));
-        assertEquals("Телефон is not field name", "Телефон", coursePage.getFieldName(3));
+        assertEquals("Имя is not field name", "Имя", getFieldName("Имя"));
+        assertEquals("Фамилия is not field name", "Фамилия", getFieldName("Фамилия"));
+        assertEquals("Электронная почта is not field name", "Электронная почта", getFieldName("Электронная почта"));
+        assertEquals("Телефон is not field name", "Телефон", getFieldName("Телефон"));
     }
 
+    public List<String> expectedFields() {
+        List<String> expectedNames = new ArrayList<String>();
+        expectedNames.add("Имя");
+        expectedNames.add("Фамилия");
+        expectedNames.add("Электронная почта");
+        expectedNames.add("Телефон");
+
+        return expectedNames;
+    }
+
+    public String getFieldName(String name) {
+        coursePage = new CoursePage(driver);
+        Map<String, String> Map = new HashMap<String, String>();
+        for (int i = 0; i < 4; i++) {
+            Map.put(expectedFields().get(i), coursePage.getAllFields().get(i) );
+        }
+
+        for (String key : Map.keySet()) {
+            return Map.get(name);
+        }
+
+        return Map.get(name);
+    }
 }
