@@ -6,11 +6,6 @@ import PageObjects.PopUp;
 import org.junit.Test;
 import org.openqa.selenium.NoSuchElementException;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 public class NetCourseTest extends BaseTest {
 
     HomePage homePage;

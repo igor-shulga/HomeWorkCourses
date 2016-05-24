@@ -1,14 +1,10 @@
 package PageObjects;
 
-
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class CoursePage {
@@ -17,7 +13,6 @@ public class CoursePage {
     private By coachName = By.className("name");
     private By popUp = By.id("u11508");
     private By applicationButton = By.className("button");
-    private By popUpFields = By.className("header");
     private String foundName;
 
     public CoursePage(WebDriver driver) {
@@ -51,15 +46,6 @@ public class CoursePage {
 
     public boolean popUpShown(){
         return driver.findElement(popUp).isDisplayed();
-    }
-
-    public List<String> getAllFields (){
-        List<WebElement> allFields = driver.findElements(popUpFields);
-        List<String> fieldNames = new ArrayList<String>();
-        for (WebElement i: allFields){
-            fieldNames.add (i.getText());
-        }
-        return fieldNames;
     }
 
 }
