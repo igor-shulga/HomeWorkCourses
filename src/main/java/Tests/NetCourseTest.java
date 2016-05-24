@@ -2,6 +2,7 @@ package Tests;
 
 import PageObjects.CoursePage;
 import PageObjects.HomePage;
+import PageObjects.PopUp;
 import org.junit.Test;
 import org.openqa.selenium.NoSuchElementException;
 
@@ -14,6 +15,8 @@ public class NetCourseTest extends BaseTest {
 
     HomePage homePage;
     CoursePage coursePage;
+    PopUp popUp;
+
     String courseName = ".NET";
 
     @Test
@@ -65,6 +68,7 @@ public class NetCourseTest extends BaseTest {
     public void checkAllFieldsFromPopUp() throws Exception {
         homePage = new HomePage(driver);
         coursePage = new CoursePage(driver);
+        popUp = new PopUp(driver);
 
         homePage.openCoursesList();
         homePage.openCoursePage(courseName);
@@ -72,33 +76,13 @@ public class NetCourseTest extends BaseTest {
         coursePage.clickLeaveApplication();
         coursePage.switchToPopUp(); // focus on pop-up
 
-        assertEquals("Имя is not field name", "Имя", getFieldName("Имя"));
-        assertEquals("Фамилия is not field name", "Фамилия", getFieldName("Фамилия"));
-        assertEquals("Электронная почта is not field name", "Электронная почта", getFieldName("Электронная почта"));
-        assertEquals("Телефон is not field name", "Телефон", getFieldName("Телефон"));
+        assertEquals("Имя is not field name", "Имя", popUp.getFieldName("Имя"));
+        assertEquals("Фамилия is not field name", "Фамилия", popUp.getFieldName("Фамилия"));
+        assertEquals("Электронная почта is not field name", "Электронная почта", popUp.getFieldName("Электронная почта"));
+        assertEquals("Телефон is not field name", "Телефон", popUp.getFieldName("Телефон"));
     }
 
-    public List<String> expectedFields() {
-        List<String> expectedNames = new ArrayList<String>();
-        expectedNames.add("Имя");
-        expectedNames.add("Фамилия");
-        expectedNames.add("Электронная почта");
-        expectedNames.add("Телефон");
 
-        return expectedNames;
-    }
 
-    public String getFieldName(String name) {
-        coursePage = new CoursePage(driver);
-        Map<String, String> Map = new HashMap<String, String>();
-        for (int i = 0; i < 4; i++) {
-            Map.put(expectedFields().get(i), coursePage.getAllFields().get(i) );
-        }
 
-        for (String key : Map.keySet()) {
-            return Map.get(name);
-        }
-
-        return Map.get(name);
-    }
 }
