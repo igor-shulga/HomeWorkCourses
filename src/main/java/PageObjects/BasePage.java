@@ -28,15 +28,15 @@ public class BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void openPage(){
+    public void openPage()  {
         driver.navigate().to("http://semantic-ui.com/modules/dropdown");
 
-      //  WebDriverWait wait = new WebDriverWait(driver,10);
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='example']/div[4]/div[1]/div[2]/div[2]/div[1]/div[4]/div")));
 
         WebElement dropDownListBox = driver.findElement(By.xpath(".//*[@id='example']/div[4]/div[1]/div[2]/div[2]/div[1]/div[4]/div")).findElement(By.tagName("select"));
         Select clickThis = new Select(dropDownListBox);
-       // clickThis.getOptions().;
+
+        clickThis.selectByVisibleText("Male");
+
         System.out.println( clickThis.getOptions().size());
 
         }
