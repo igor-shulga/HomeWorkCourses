@@ -33,9 +33,12 @@ public class BasePage {
 
 
         WebElement dropDownListBox = driver.findElement(By.xpath(".//*[@id='example']/div[4]/div[1]/div[2]/div[2]/div[1]/div[4]/div")).findElement(By.tagName("select"));
+        dropDownListBox.click();
+        
         Select clickThis = new Select(dropDownListBox);
 
         clickThis.selectByVisibleText("Male");
+
 
         System.out.println( clickThis.getOptions().size());
 
