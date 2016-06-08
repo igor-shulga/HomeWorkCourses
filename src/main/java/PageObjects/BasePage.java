@@ -17,10 +17,6 @@ import java.util.List;
 public class BasePage {
 
     private WebDriver driver;
-    private By input = By.xpath(".//*[@id='example']/div[4]/div[1]/div[2]/div[2]/div[22]/div/input");
-    private By className = By.id("ui left action input");
-    private By inputTag = By.tagName("input");
-
 
 
     public BasePage(WebDriver driver) {
@@ -28,37 +24,38 @@ public class BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void openPage()  {
-        driver.navigate().to("http://semantic-ui.com/modules/dropdown");
-
-
-        WebElement dropDownListBox = driver.findElement(By.xpath(".//*[@id='example']/div[4]/div[1]/div[2]/div[2]/div[1]/div[4]/div")).findElement(By.tagName("select"));
-        dropDownListBox.click();
-        
-        Select clickThis = new Select(dropDownListBox);
-
-        clickThis.selectByVisibleText("Male");
-
-
-        System.out.println( clickThis.getOptions().size());
-
+    public void openPage(String pageUrl) {
+        driver.navigate().to(pageUrl);
         }
 
-       // System.out.println(element.getAttribute("value"));
+    public void dropDownWrapper(By locator, String selectElement) {
+        WebElement dropDownListBox = driver.findElement(locator);
+        Select clickThis = new Select(dropDownListBox);
+        clickThis.selectByVisibleText(selectElement);
+        // clickThis.selectByIndex(1);
+
     }
 
 
-    /* get value from form
-    driver.navigate().to("http://semantic-ui.com/elements/input.html");
-     private By input = By.xpath(".//*[@id='example']/div[4]/div[1]/div[2]/div[2]/div[22]/div/input");
+    public void showValueFromInputForm(By locator, String attributeName) {
+        WebElement element = driver.findElement(locator);
+        System.out.println(element.getAttribute(attributeName));
+    }
 
-    driver.navigate().to("http://semantic-ui.com/elements/input.html");
-        WebElement element = driver.findElement(input);
+    public void reloadPage() {
+        Actions reloadPage = new Actions(driver);
+        reloadPage.keyDown(Keys.CONTROL).sendKeys(Keys.F5).perform();
+    }
+
+    public void waitTillElementWillBeVisible(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+
+    }
+    }
 
 
 
-        System.out.println(element.getAttribute("value"));
-     */
 
     /* reload page and wait till element will be visible
      driver.navigate().to("http://semantic-ui.com/elements/input.html");
