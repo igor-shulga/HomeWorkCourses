@@ -52,18 +52,5 @@ public class BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 
     }
-    }
-
-
-
-
-    /* reload page and wait till element will be visible
-     driver.navigate().to("http://semantic-ui.com/elements/input.html");
-        Actions reloadPage = new Actions(driver);
-        reloadPage.keyDown(Keys.CONTROL).sendKeys(Keys.F5).perform();
-
-        WebDriverWait wait = new WebDriverWait(driver,10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(input));
-     */
-
-
+    
+}
